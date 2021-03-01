@@ -1,17 +1,20 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+
 
 RUN apt-get -y update && apt-get -y upgrade && apt-get -y clean
-RUN apt-get -y install sane sane-utils ghostscript netpbm x11-common- wget graphicsmagick curl ssh sshpass && apt-get -y clean
+RUN apt-get -y install sane sane-utils ghostscript netpbm wget graphicsmagick curl ssh sshpass && apt-get -y clean
 
 RUN cd /tmp && \
-    wget http://download.brother.com/welcome/dlf006645/brscan4-0.4.5-1.amd64.deb && \
-    dpkg -i /tmp/brscan4-0.4.5-1.amd64.deb && \
-    rm /tmp/brscan4-0.4.5-1.amd64.deb
+    wget https://download.brother.com/welcome/dlf105200/brscan4-0.4.10-1.amd64.deb && \
+    dpkg -i /tmp/brscan4-0.4.10-1.amd64.deb && \
+    rm /tmp/brscan4-0.4.10-1.amd64.deb
 
 RUN cd /tmp && \
-    wget http://download.brother.com/welcome/dlf006652/brscan-skey-0.2.4-1.amd64.deb && \
-    dpkg -i /tmp/brscan-skey-0.2.4-1.amd64.deb && \
-    rm /tmp/brscan-skey-0.2.4-1.amd64.deb
+    wget https://download.brother.com/welcome/dlf006652/brscan-skey-0.3.1-2.amd64.deb && \
+    dpkg -i /tmp/brscan-skey-0.3.1-2.amd64.deb && \
+    rm /tmp/brscan-skey-0.3.1-2.amd64.deb
 
 ADD files/runScanner.sh /opt/brother/runScanner.sh
 
