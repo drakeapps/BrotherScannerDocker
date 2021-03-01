@@ -18,6 +18,8 @@ RUN cd /tmp && \
 
 ADD files/runScanner.sh /opt/brother/runScanner.sh
 
+COPY script /opt/brother/scanner/brscan-skey/script
+
 ENV NAME="Scanner"
 ENV MODEL="MFC-L2700DW"
 ENV IPADDRESS="192.168.1.123"
